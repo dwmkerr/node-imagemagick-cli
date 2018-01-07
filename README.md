@@ -1,6 +1,6 @@
 # node-imagemagick-cli [![CircleCI](https://circleci.com/gh/dwmkerr/node-imagemagick-cli.svg?style=shield)](https://circleci.com/gh/dwmkerr/node-imagemagick-cli) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/3e334rknhjbpx555?svg=true)](https://ci.appveyor.com/project/dwmkerr/node-imagemagick-cli) [![codecov](https://codecov.io/gh/dwmkerr/node-imagemagick-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/node-imagemagick-cli) [![dependencies Status](https://david-dm.org/dwmkerr/node-imagemagick-cli/status.svg)](https://david-dm.org/dwmkerr/node-imagemagick-cli) [![devDependencies Status](https://david-dm.org/dwmkerr/node-imagemagick-cli/dev-status.svg)](https://david-dm.org/dwmkerr/node-imagemagick-cli?type=dev)
 
-Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Native. Also supports labelling of app icons. Inspired by [cordova-icon](https://github.com/AlexDisler/cordova-icon).
+Access the ImageMagick CLI tools from Node. Cross-platform, with support for ImageMagick 6 and 7.
 
 <img src="./assets/banner.png" width="614" alt="Banner">
 
@@ -19,15 +19,12 @@ Automatic icon resizing for Mobile Apps. Supports Native, Cordova and React Nati
 
 ## Introduction
 
-This simple tool allows you to create a single icon in your app project, then create icons of all required sizes from it. It currently works for iOS and Android. You can also add labels to your app icons.
+Usage:
 
-Create a single large `icon.png`, at leats 192 pixels square, then run:
-
-```bash
-npx app-icon generate
+```node
+imagemagickCli.exec('convert abc');
+imageMagickCli.isInstalled().then(installed => console.log);
 ```
-
-In your project root. As long as you are running NPM 5.2 onwards it download and run the tool, generating icons for your project!
 
 ## Installation
 
