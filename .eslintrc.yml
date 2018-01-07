@@ -1,0 +1,9 @@
+extends: airbnb-base
+env:
+  node: true
+  mocha: true
+plugins:
+  - import
+rules:
+  no-console: 0
+  import/no-extraneous-dependencies: [error, { devDependencies: ['**/*.spec.js'] }]

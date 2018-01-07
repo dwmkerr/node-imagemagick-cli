@@ -1,0 +1,10 @@
+machine:
+  node:
+    version: 6
+test:
+  override:
+    - magick -version
+    - npm run cov
+    - npm run lint
+  post:
+    - bash <(curl -s https://codecov.io/bash)

@@ -1,0 +1,40 @@
+{
+  "name": "imagemagick-cli",
+  "version": "0.1.0",
+  "description": "",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "mocha -name '*.spec.js' --recursive ./src",
+    "test:debug": "mocha --inspect --inspect-brk -name '*.spec.js' --recursive ./src",
+    "cov": "nyc --reporter text --reporter html --reporter lcov --report-dir './artifacts/coverage' -x './src/**/*.spec.js' npm test",
+    "lint": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dwmkerr/node-imagemagick-cli.git"
+  },
+  "keywords": [
+    "imagemagick",
+    "magick"
+  ],
+  "author": "Dave Kerr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dwmkerr/node-imagemagick-cli/issues"
+  },
+  "homepage": "https://github.com/dwmkerr/node-imagemagick-cli#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^4.14.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "mocha": "^4.1.0",
+    "nyc": "^11.0.1"
+  },
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "command-exists": "^1.2.2",
+    "commander": "^2.12.2",
+    "mkdirp": "^0.5.1"
+  }
+}
