@@ -5,6 +5,7 @@
   "main": "./src/index.js",
   "scripts": {
     "test": "mocha -name '*.spec.js' --recursive ./src",
+    "test:watch": "mocha -name '*.spec.js' --watch --recursive ./src",
     "test:debug": "mocha --inspect --inspect-brk -name '*.spec.js' --recursive ./src",
     "cov": "nyc --reporter text --reporter html --reporter lcov --report-dir './artifacts/coverage' -x './src/**/*.spec.js' npm test",
     "lint": "eslint src"

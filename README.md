@@ -2,98 +2,64 @@
 
 Access the ImageMagick CLI tools from Node. Cross-platform, with support for ImageMagick 6 and 7.
 
-<img src="./assets/banner.png" width="614" alt="Banner">
-
 - [Introduction](#introduction)
-- [Installation](#installation)
-- [Usage](#usage)
-	- [Generating Icons](#generating-icons)
-	- [Labelling Icons](#labelling-icons)
+- [Compatibility](#compatibility)
 - [Coding](#coding)
-	- [Initial Setup](#initial-setup)
-	- [Running Tests](#running-tests)
-	- [Creating a Release](#creating-a-release)
-- [The Sample Projects](#the-sample-projects)
-- [Troubleshooting](#troubleshooting)
 - [License](#license)
 
 ## Introduction
 
-Usage:
+This library is designed to provide a *safe* and *platform independent* way of calling the ImageMagick CLI tools.
+
+It is *safe* because it correctly deals with the [Windows convert issue](http://www.imagemagick.org/Usage/windows/#convert_issue). It is *platform indepdent* because you don't have to worry about how it deals with the issue.
+
+Install with npm:
+
+```bash
+npm install --save imagemagick-cli
+```
+
+To call an ImageMagick CLI tool, just run:
 
 ```node
-imagemagickCli.exec('convert abc');
-imageMagickCli.isInstalled().then(installed => console.log);
+const imagemagickCli = require('imagemagick-cli');
+imagemagickCli.exec('convert -version');
 ```
 
-## Installation
+If ImageMagick 7 is installed, the command will be prefaced by `magick`. If running on Windows and ImageMagick 6 is installed, all available matching commands will be identified, and the appropriate ImageMagick command is executed.
 
-Install with:
+This means that you can safely call `convert -version` on MacOS, Linux or Windows knowing that it will call the appropriate binary.
 
-```bash
-npm install -g app-icon
-```
+## Compatibility
 
-You will need [imagemagick](http://www.imagemagick.org/) installed:
+This libary is tested with the following platforms and ImageMagick versions:
 
-```bash
-brew install imagemagick          # OSX
-sudo apt-get install imagemagick  # Debian/Ubuntu/etc
-sudo yum install imagemagick      # CentOS/etc
-```
+| Platform          | ImageMagick Version |
+|-------------------|---------------------|
+| OSX               | 6  ✅               |
+| OSX               | 7  ✅               |
+| Ubuntu            | 6  ✅               |
+| Ubuntu            | 7  ✅               |
+| Windows           | 6  ❌               |
+| Windows           | 7  ✅               |
 
-## Usage
+## Prior Art / Design Goals
 
-The commandline tool can be used to generate icons or label icons.
+I made this library to deal with some issues relating to Windows in the [`app-icon`](https://github.com/dwmkerr/app-icon) project, which I didn't have to deal with again in other projects (like [`app-splash`](https://github.com/dwmkerr/app-splash).
 
-### Generating Icons
+There are some great and sophisticated modules around for working with IM:
 
-Add an icon (ideally at least 192x192 pixels) named `icon.png` to your project root. To automatically generate icons of all sizes for all app projects in the same folder, run:
+- https://github.com/rsms/node-imagemagick
+- https://github.com/yourdeveloper/node-imagemagick (which is the active fork of the avove)
+- https://github.com/elad/node-imagemagick-native
 
-```bash
-app-icon generate
-```
+I decided to create my own library because I don't need *apis* for ImageMagick in my use cases, just a platform agnostic way to call the CLI tools. The design goals for this project are that it allows you to run IM CLI tools without having to worry about platform or version nuances, that's it.
 
-If an iOS project is present, then the icon will be copied at all required sizes to:
-
-```
-./ios/<ProjectName>/Images.xcassets/AppIcon.appiconset
-```
-
-If an Android project is present, then the icon will be copied at all required sizes to:
-
-```
-./android/app/src/main/res
-```
-
-You can limit the platforms which icons are generated for with the `--platforms` flag, specifying:
-
-```bash
-app-icon generate --platforms=ios
-app-icon generate --platforms=android,ios
-```
-
-By default the tool will generate icons for both platforms.
-
-You can specify the path to the source icon, as well as the folder to search for app projects, just run `app-icon generate -h` to see the options.
-
-### Labelling Icons
-
-Add labels to an icon with the command below:
-
-```bash
-app-icon label -i icon.png -o output.png --top UAT --bottom 0.12.3
-```
-
-This would produce output like the below image:
-
-![Labelled Icon Image](./assets/label.png)
-
-This is a useful trick when you are creating things like internal QA versions of your app, where you might want to show a version number or other label in the icon itself.
+If you need more functionality I recommend looking into the projects above.
 
 ## Coding
 
-The only dependencies are Node 6 (or above) and Yarn.
+The only dependencies are Node 6 (or above).
 
 Useful commands for development are:
 
@@ -102,29 +68,7 @@ Useful commands for development are:
 | `npm test` | Runs the unit tests. |
 | `npm run test:debug` | Runs the tests in a debugger. Combine with `.only` and `debugger` for ease of debugging. |
 | `npm run cov` | Runs the tests, writing coverage reports to `./artifacts/coverage`. |
-
-Currently the linting style is based on [airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb). Run `npm run lint` to lint the code.
-
-### Initial Setup
-
-Install the dependencies (I recommend [Node Version Manager](https://github.com/creationix/nvm)):
-
-```bash
-nvm install 6
-nvm use 6
-git clone git@github.com:dwmkerr/app-icon.git
-cd app-icon
-```
-
-### Running Tests
-
-Run the tests with:
-
-```bash
-npm test
-```
-
-Tests are executed with [Mocha](https://mochajs.org/) and coverage is handled by [Istanbul](https://github.com/gotwarlost/istanbul). Coverage reports are written to an `./artifacts` folder.
+| `npm run lint` | Lint the code, using [airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb). |
 
 ### Creating a Release
 
@@ -132,43 +76,7 @@ To create a release.
 
 - Merge your work to master.
 - Use `npm version` to bump, e.g. `npm version patch`
-- Push and deploy `git push --tags && git push && npm publish`
-
-## The Sample Projects
-
-This project includes some sample apps in the `test` folder, which are used for the tests. You can also run these apps to see the icons produced in action.
-
-### React Native
-
-To run:
-
-```bash
-cd ./test/ReactNativeIconTest/
-npm install
-react-native run-ios
-# OR react-native run-android
-```
-
-### Cordova
-
-To run:
-
-```bash
-cd ./test/CordovaApp/
-npm install
-cordova run ios
-# OR cordova run android
-```
-
-### Native
-
-To run the native apps, open the `./test/NativeApp` directory, then open the iOS/Android projects in XCode/AndroidStudio as needed.
-
-## Troubleshooting
-
-**Images labelled with `app-icon label` have the text slightly vertically offset**
-
-This seems to be an issue with Imagemagick 6 - try upgrading to 7.
+- Push and deploy `git push --follow-tags`
 
 ## License
 
