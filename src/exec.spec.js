@@ -27,23 +27,28 @@ describe('exec', () => {
   });
 
   it('should return a sensible error if the command does not exist', () => {
-    return exec('no-way-this-is-a-real-command parameters')
+    //  We expect 'childProcess.exec' to be called with 'which'.
+    sandbox.stub(childProcess, 'exec')
+      .callsFake((cmd, callback) => {
+        const err = new Error('command: no-way does not exist');
+        callback(err, null, 'command: no-way does not exist');
+      });
+
+    return exec('no-way parameters')
+      .then(() => {
+        throw new Error('This command should fail.');
+      })
       .catch((err) => {
-        expect(err.message).to.match(/not found/);
+        expect(err.message).to.match(/does not exist/);
+        expect(err.stderr).to.match(/does not exist/);
       });
   });
 
-  it('should be able to call imagemagick and get the installed version', () => {
+  //  TODO: will need to be a functional test.
+  xit('should be able to call imagemagick and get the installed version', () => {
     return exec('identify -version')
       .then(({ stdout }) => {
         expect(stdout).to.match(/Version: ImageMagick/);
-      });
-  });
-
-  it('should return a sensible error if the command has bad parameters', () => {
-    return exec('identify no-file.png')
-      .catch((err) => {
-        expect(err.message).to.match(/unable to open image/);
       });
   });
 
