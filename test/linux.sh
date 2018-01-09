@@ -14,7 +14,9 @@ sudo apt remove --purge imagemagick
 # Install IM 6.
 # TODO
 
+sudo su
 cd /opt
+wget http://www.imagemagick.org/download/ImageMagick-6.9.9-33.tar.gz
 wget http://www.imagemagick.org/download/ImageMagick-6.9.9-33.tar.gz
 tar xvzf ImageMagick-6.9.9-33.tar.gz
 cd ImageMagick-6.9.9-33
