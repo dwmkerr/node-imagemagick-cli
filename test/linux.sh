@@ -13,8 +13,6 @@ fi
 sudo apt remove --purge imagemagick
 
 # Install IM 6.
-# TODO
-
 wget http://www.imagemagick.org/download/ImageMagick-6.9.9-33.tar.gz
 wget http://www.imagemagick.org/download/ImageMagick-6.9.9-33.tar.gz
 tar xvzf ImageMagick-6.9.9-33.tar.gz
@@ -23,5 +21,8 @@ touch configure
 ./configure
 make
 sudo make install
-ldconfig /usr/local/lib
-convert -v
+sudo ldconfig /usr/local/lib
+convert -version
+
+# Check the IM version.
+node ./check-imagemagick-version.js

@@ -18,8 +18,8 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-        
-      - run: npm test
+      - run: npm run lint
+      - run: npm run cov
         # Run the functional tests...
       - run: ./test/linux.sh
       - run: bash <(curl -s https://codecov.io/bash)
