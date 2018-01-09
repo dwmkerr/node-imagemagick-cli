@@ -22,6 +22,6 @@ cd ImageMagick-6.9.9-33
 touch configure
 ./configure
 make
-make install
+sudo make install
 ldconfig /usr/local/lib
 convert -v
