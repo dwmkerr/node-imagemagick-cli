@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/node:6
+        environment:
+          NODE_ENV: test
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm test
+      - run: bash <(curl -s https://codecov.io/bash)
