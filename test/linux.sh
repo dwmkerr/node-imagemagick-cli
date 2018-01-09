@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 # IMPORTANT: Run this on a CI platform only, ideally in a container. It affects
 # the installed software and is NOT SAFE to run locally!
@@ -23,5 +24,4 @@ touch configure
 make
 make install
 ldconfig /usr/local/lib
-make check
 convert -v
