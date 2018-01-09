@@ -1,13 +1,23 @@
 version: 2
 jobs:
-  test:
+  build:
     docker:
       - image: circleci/node:6
-        environment:
-          NODE_ENV: test
-    working_directory: ~/project
+    working_directory: ~/repo
     steps:
       - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
       - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+        
       - run: npm test
       - run: bash <(curl -s https://codecov.io/bash)
