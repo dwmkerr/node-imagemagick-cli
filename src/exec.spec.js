@@ -27,6 +27,10 @@ describe('exec', () => {
   });
 
   it('should return a sensible error if the command does not exist', () => {
+    //  Fake the OSX platform, otherwise on Windows we will try and use
+    //  'where' to identify the cli.
+    Object.defineProperty(process, 'platform', { value: 'darwin' });
+
     //  We expect 'childProcess.exec' to be called with 'which'.
     sandbox.stub(childProcess, 'exec')
       .callsFake((cmd, callback) => {
@@ -41,14 +45,6 @@ describe('exec', () => {
       .catch((err) => {
         expect(err.message).to.match(/does not exist/);
         expect(err.stderr).to.match(/does not exist/);
-      });
-  });
-
-  //  TODO: will need to be a functional test.
-  xit('should be able to call imagemagick and get the installed version', () => {
-    return exec('identify -version')
-      .then(({ stdout }) => {
-        expect(stdout).to.match(/Version: ImageMagick/);
       });
   });
 
