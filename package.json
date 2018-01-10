@@ -34,9 +34,5 @@
     "sinon": "^4.1.4"
   },
   "dependencies": {
-    "chalk": "^2.3.0",
-    "command-exists": "^1.2.2",
-    "commander": "^2.12.2",
-    "mkdirp": "^0.5.1"
   }
 }
