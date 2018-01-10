@@ -18,4 +18,4 @@ cli.exec('convert -version')
       process.exit(1);
     }
   })
-  .catch(({ message }) => { console.err(message); process.exit(1); });
+  .catch(({ message }) => { console.error(message); process.exit(1); });
