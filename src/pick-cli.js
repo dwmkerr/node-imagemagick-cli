@@ -19,7 +19,7 @@ function pickCli(cli) {
 
       console.log(`where has returned: ${stdout}`);
 
-      const options = stdout.split('\n');
+      const options = stdout.split('\r\n');
 
       //  The first regex to pass wins.
       for (let i = 0; i < regexes.length; i += 1) {
