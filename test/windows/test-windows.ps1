@@ -8,3 +8,6 @@ refreshenv
 # Test for IM 6.
 $env:CHECK_VERSION="9"
 node .\\test\\check-imagemagick-version.js
+If ($LastExitCode -ne 0) {
+    Throw "ImageMagick Version Test Failed"
+}
