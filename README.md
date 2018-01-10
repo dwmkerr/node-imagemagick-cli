@@ -1,4 +1,6 @@
-# node-imagemagick-cli [![CircleCI](https://circleci.com/gh/dwmkerr/node-imagemagick-cli.svg?style=shield)](https://circleci.com/gh/dwmkerr/node-imagemagick-cli) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/3e334rknhjbpx555?svg=true)](https://ci.appveyor.com/project/dwmkerr/node-imagemagick-cli) [![codecov](https://codecov.io/gh/dwmkerr/node-imagemagick-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/node-imagemagick-cli) [![dependencies Status](https://david-dm.org/dwmkerr/node-imagemagick-cli/status.svg)](https://david-dm.org/dwmkerr/node-imagemagick-cli) [![devDependencies Status](https://david-dm.org/dwmkerr/node-imagemagick-cli/dev-status.svg)](https://david-dm.org/dwmkerr/node-imagemagick-cli?type=dev)
+# node-imagemagick-cli
+
+[![CircleCI](https://circleci.com/gh/dwmkerr/node-imagemagick-cli.svg?style=shield)](https://circleci.com/gh/dwmkerr/node-imagemagick-cli) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/3e334rknhjbpx555?svg=true)](https://ci.appveyor.com/project/dwmkerr/node-imagemagick-cli) [![codecov](https://codecov.io/gh/dwmkerr/node-imagemagick-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/node-imagemagick-cli) [![dependencies Status](https://david-dm.org/dwmkerr/node-imagemagick-cli/status.svg)](https://david-dm.org/dwmkerr/node-imagemagick-cli) [![devDependencies Status](https://david-dm.org/dwmkerr/node-imagemagick-cli/dev-status.svg)](https://david-dm.org/dwmkerr/node-imagemagick-cli?type=dev)
 
 Access the ImageMagick CLI tools from Node. Cross-platform, with support for ImageMagick 6 and 7.
 
@@ -26,9 +28,7 @@ const imagemagickCli = require('imagemagick-cli');
 imagemagickCli.exec('convert -version');
 ```
 
-If ImageMagick 7 is installed, the command will be prefaced by `magick`. If running on Windows and ImageMagick 6 is installed, all available matching commands will be identified, and the appropriate ImageMagick command is executed.
-
-This means that you can safely call `convert -version` on MacOS, Linux or Windows knowing that it will call the appropriate binary.
+This command will work consistently on MacOSX, Windows and Linux. On Windows, it will not conflict with the system installed `convert.exe` tool.
 
 ## Compatibility
 
@@ -40,7 +40,7 @@ This libary is tested with the following platforms and ImageMagick versions:
 | OSX               | 7  ✅               |
 | Ubuntu            | 6  ✅               |
 | Ubuntu            | 7  ✅               |
-| Windows           | 6  ❌               |
+| Windows           | 6  ✅               |
 | Windows           | 7  ✅               |
 
 ## Prior Art / Design Goals
