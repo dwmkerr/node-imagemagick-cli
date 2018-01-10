@@ -2,10 +2,10 @@ const childProcess = require('child_process');
 
 const regexes = [
   //  Most intalls will be in an ImageMagick folder...
-  new RegExp(/\\ImageMagick/, 'i'),
+  new RegExp(/ImageMagick/, 'i'),
 
   //  ...if the user uses 'choco' to install, it'll be in a chocolatey folder.
-  new RegExp(/\\chocolately/, 'i'),
+  new RegExp(/chocolately/, 'i'),
 ];
 
 function pickCli(cli) {
