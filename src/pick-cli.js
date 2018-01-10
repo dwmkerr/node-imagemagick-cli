@@ -5,7 +5,7 @@ const regexes = [
   new RegExp(/ImageMagick/, 'i'),
 
   //  ...if the user uses 'choco' to install, it'll be in a chocolatey folder.
-  new RegExp(/chocolately/, 'i'),
+  new RegExp(/chocolatey/, 'i'),
 ];
 
 function pickCli(cli) {
