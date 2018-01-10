@@ -25,6 +25,27 @@ describe('pickCli', () => {
       });
   });
 
+  it('should reject with the error from exec if exec fails', () => {
+    //  Fake the win32 platform.
+    Object.defineProperty(process, 'platform', { value: 'win32' });
+
+    //  We expect 'childProcess.exec' to be called with 'which'.
+    const mock = sandbox.mock(childProcess)
+      .expects('exec')
+      .withArgs('where convert')
+      .once()
+      .callsFake((cmd, callback) => {
+        callback(new Error('Something broke.'));
+      });
+
+    //  When we look for convert, we expect to get back the path from 'where'.
+    return pickCli('convert')
+      .catch((err) => {
+        expect(err.message).to.eql('Something broke.');
+        mock.verify();
+      });
+  });
+
   it('should use the \'which\' command to identify potential tools on windows', () => {
     //  Fake the win32 platform.
     Object.defineProperty(process, 'platform', { value: 'win32' });

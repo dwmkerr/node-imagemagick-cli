@@ -17,15 +17,12 @@ function pickCli(cli) {
     return childProcess.exec(`where ${cli}`, (err, stdout) => {
       if (err) return reject(err);
 
-      console.log(`where has returned: ${stdout}`);
-
       const options = stdout.split('\r\n');
 
       //  The first regex to pass wins.
       for (let i = 0; i < regexes.length; i += 1) {
         for (let j = 0; j < options.length; j += 1) {
           const result = regexes[i].test(options[j]);
-          console.log(`testing with '${regexes[i]}' with '${options[j]}' returned: ${result}`);
           if (result) return resolve(options[j]);
         }
       }

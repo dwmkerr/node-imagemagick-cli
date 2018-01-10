@@ -43,6 +43,30 @@ This libary is tested with the following platforms and ImageMagick versions:
 | Windows           | 6  ✅               |
 | Windows           | 7  ✅               |
 
+## API
+
+Execute a command:
+
+```node
+imagemagickCli
+    .exec('convert -version')
+    .then(({ stdout, stderr }) => {
+        console.log(`Output: ${stdout}`);
+    });
+```
+
+Check the ImageMagick version:
+
+```node
+imagemagickCli
+    .getVersion()
+    .then((version) => {
+        console.log(`Version: ${version}`);
+    });
+```
+
+If the version cannot be identified (most likely because ImageMagick is not installed) then the function resolves with `null`.
+
 ## Prior Art / Design Goals
 
 I made this library to deal with some issues relating to Windows in the [`app-icon`](https://github.com/dwmkerr/app-icon) project, which I didn't have to deal with again in other projects (like [`app-splash`](https://github.com/dwmkerr/app-splash).
