@@ -36,7 +36,7 @@ function exec(command) {
       .then((mappedCli) => {
         //  We have the CLI path mapped, which means we can reconstruct the command
         //  with the appropriate path and execute it.
-        const reconstructedCommand = `${mappedCli} ${parameters}`;
+        const reconstructedCommand = `"${mappedCli}" ${parameters}`;
         childProcess.exec(reconstructedCommand, (err, stdout, stderr) => {
           if (err) {
             const errorMessage = `Failed to call '${command}', which was mapped to '${reconstructedCommand}'. Error is '${err.message}'.`;
