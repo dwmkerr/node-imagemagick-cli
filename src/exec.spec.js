@@ -64,7 +64,8 @@ describe('exec', () => {
         ];
         callback(null, paths.join('\r\n'));
       })
-      .withArgs('c:\\ProgramFiles\\ImageMagick\\Convert.exe -v')
+      //  Notice that the path is quoted...
+      .withArgs('"c:\\ProgramFiles\\ImageMagick\\Convert.exe" -v')
       .callsFake((cmd, callback) => {
         callback(null, 'Version: ImageMagick');
       });
