@@ -1,5 +1,7 @@
 # node-imagemagick-cli
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/dwmkerr/node-imagemagick-cli.svg)](https://greenkeeper.io/)
+
 [![CircleCI](https://circleci.com/gh/dwmkerr/node-imagemagick-cli.svg?style=shield)](https://circleci.com/gh/dwmkerr/node-imagemagick-cli) [![Build status](https://ci.appveyor.com/api/projects/status/uwggloq6ooxq1vtj?svg=true)](https://ci.appveyor.com/project/dwmkerr/node-imagemagick-cli) [![codecov](https://codecov.io/gh/dwmkerr/node-imagemagick-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/node-imagemagick-cli) [![dependencies Status](https://david-dm.org/dwmkerr/node-imagemagick-cli/status.svg)](https://david-dm.org/dwmkerr/node-imagemagick-cli) [![devDependencies Status](https://david-dm.org/dwmkerr/node-imagemagick-cli/dev-status.svg)](https://david-dm.org/dwmkerr/node-imagemagick-cli?type=dev)
 
 Access the ImageMagick CLI tools from Node. Cross-platform, with support for ImageMagick 6 and 7.
