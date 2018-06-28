@@ -1,6 +1,6 @@
 {
   "name": "imagemagick-cli",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Access the ImageMagick CLI tools from Node. Cross-platform, with support for ImageMagick 6 and 7.",
   "main": "./src/index.js",
   "scripts": {
