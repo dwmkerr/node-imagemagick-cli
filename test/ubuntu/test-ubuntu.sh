@@ -21,7 +21,7 @@ cd ..
 CHECK_VERSION=6 node ./test/check-imagemagick-version.js
 
 # Install IM 7.
-version="ImageMagick-7.0.7-29"
+version="ImageMagick-7.0.8-3"
 cp ./test/downloads/${version}.tar.gz .
 tar xzf ${version}.tar.gz
 cd ${version}
