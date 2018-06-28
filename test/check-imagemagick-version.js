@@ -1,16 +1,11 @@
 const cli = require('../src/index');
 
 const checkVersion = process.env.CHECK_VERSION;
-
-cli.exec('convert -version')
-  .then(({ stdout }) => {
-    //  Log the output.
-    console.log(stdout);
-
-    //  Check the version.
-    const rex = new RegExp(`Version: ImageMagick ${checkVersion}`);
+cli.getVersion()
+  .then((version) => {
     console.log(`Checking for version: ${checkVersion}`);
-    if (rex.test(stdout)) {
+    const rex = new RegExp(`^${checkVersion}`, 'i');
+    if (rex.test(version)) {
       console.log('Success!');
       process.exit(0);
     } else {
@@ -18,4 +13,7 @@ cli.exec('convert -version')
       process.exit(1);
     }
   })
-  .catch(({ message }) => { console.error(message); process.exit(1); });
+  .catch(({ message }) => {
+    console.error(message);
+    process.exit(1);
+  });
