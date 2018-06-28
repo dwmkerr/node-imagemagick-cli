@@ -1,6 +1,6 @@
 {
   "name": "imagemagick-cli",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Access the ImageMagick CLI tools from Node. Cross-platform, with support for ImageMagick 6 and 7.",
   "main": "./src/index.js",
   "scripts": {
@@ -8,7 +8,9 @@
     "test:watch": "mocha -name '*.spec.js' --watch --recursive ./src",
     "test:debug": "mocha --inspect --inspect-brk -name '*.spec.js' --recursive ./src",
     "cov": "nyc --reporter text --reporter html --reporter lcov --report-dir './artifacts/coverage' --exclude '**/*.spec.js' npm test",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "release": "standard-version",
+    "preversion": "echo 'error: use npm run release instead' && exit 1"
   },
   "repository": {
     "type": "git",
@@ -28,10 +30,11 @@
     "chai": "^4.1.2",
     "eslint": "^5.0.0",
     "eslint-config-airbnb-base": "^13.0.0",
-    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-import": "^2.13.0",
     "mocha": "^5.0.0",
     "nyc": "^12.0.1",
-    "sinon": "^6.0.0"
+    "sinon": "^6.0.0",
+    "standard-version": "^4.4.0"
   },
   "dependencies": {}
 }

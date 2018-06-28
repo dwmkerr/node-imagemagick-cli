@@ -41,8 +41,7 @@ describe('getVersion', () => {
     //  We expect 'childProcess.exec' to be called with 'convert -v'.
     sandbox.stub(childProcess, 'exec')
       .callsFake((cmd, callback) => {
-        const output =
-          `Version: ImageMagick 7.0.5-7 Q16 x86_64 2017-05-20 http://www.imagemagick.org
+        const output = `Version: ImageMagick 7.0.5-7 Q16 x86_64 2017-05-20 http://www.imagemagick.org
           Copyright: © 1999-2017 ImageMagick Studio LLC
           License: http://www.imagemagick.org/script/license.php
           Features: Cipher DPC HDRI Modules

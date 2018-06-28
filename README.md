@@ -99,8 +99,8 @@ Useful commands for development are:
 To create a release.
 
 - Merge your work to master.
-- Use `npm version` to bump, e.g. `npm version patch`
-- Push and deploy `git push --follow-tags`
+- Use `npm run release` to bump and update the changelog
+- Push and deploy `git push --follow-tags && npm publish`
 
 ## License
 
