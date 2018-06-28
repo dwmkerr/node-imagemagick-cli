@@ -5,8 +5,8 @@ set -e
 sudo apt remove --purge imagemagick
 
 # Install IM 6.
-version="ImageMagick-6.9.9-41"
-wget http://www.imagemagick.org/download/${version}.tar.gz
+version="ImageMagick-6.9.10-3"
+cp ../downloads/${version}.tar.gz .
 tar xzf ${version}.tar.gz
 cd ${version}
 touch configure
@@ -22,7 +22,7 @@ CHECK_VERSION=6 node ./test/check-imagemagick-version.js
 
 # Install IM 7.
 version="ImageMagick-7.0.7-29"
-wget http://www.imagemagick.org/download/${version}.tar.gz
+cp ../downloads/${version}.tar.gz .
 tar xzf ${version}.tar.gz
 cd ${version}
 touch configure
