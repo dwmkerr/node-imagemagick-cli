@@ -36,5 +36,7 @@
     "sinon": "^6.0.0",
     "standard-version": "^4.4.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "debug": "^4.1.1"
+  }
 }
