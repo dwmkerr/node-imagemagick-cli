@@ -42,8 +42,8 @@ function exec(command) {
 
         childProcess.exec(reconstructedCommand, (err, stdout, stderr) => {
           debug(`  err: ${err ? err.toString() : '<null>'}`);
-          debug(`  stdout: ${err.toString()}`);
-          debug(`  stderr: ${err.toString()}`);
+          debug(`  stdout: ${stdout}`);
+          debug(`  stderr: ${stderr}`);
           if (err) {
             const errorMessage = `Failed to call '${command}', which was mapped to '${reconstructedCommand}'. Error is '${err.message}'.`;
             const error = new Error(errorMessage);
