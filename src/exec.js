@@ -1,4 +1,5 @@
 const childProcess = require('child_process');
+const debug = require('debug')('imagemagick-cli');
 const deconstructCommand = require('./deconstruct-command');
 const pickCli = require('./pick-cli');
 
@@ -37,6 +38,8 @@ function exec(command) {
         //  We have the CLI path mapped, which means we can reconstruct the command
         //  with the appropriate path and execute it.
         const reconstructedCommand = `"${mappedCli}" ${parameters}`;
+        debug(`Preparing to execute: ${reconstructedCommand}`);
+
         childProcess.exec(reconstructedCommand, (err, stdout, stderr) => {
           if (err) {
             const errorMessage = `Failed to call '${command}', which was mapped to '${reconstructedCommand}'. Error is '${err.message}'.`;
