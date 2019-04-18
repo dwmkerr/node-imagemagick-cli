@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [0.4.0](https://github.com/dwmkerr/node-imagemagick-cli/compare/v0.3.0...v0.4.0) (2019-04-18)
+
+
+### Features
+
+* add debug package ([b29874c](https://github.com/dwmkerr/node-imagemagick-cli/commit/b29874c))
+* add support for node-debug ([d5070ed](https://github.com/dwmkerr/node-imagemagick-cli/commit/d5070ed))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/dwmkerr/node-imagemagick-cli/compare/v0.2.1...v0.3.0) (2018-06-28)
 
