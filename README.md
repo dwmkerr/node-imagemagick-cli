@@ -91,7 +91,7 @@ I made this library to deal with some issues relating to Windows in the [`app-ic
 There are some great and sophisticated modules around for working with IM:
 
 - https://github.com/rsms/node-imagemagick
-- https://github.com/yourdeveloper/node-imagemagick (which is the active fork of the avove)
+- https://github.com/yourdeveloper/node-imagemagick (which is the active fork of the above)
 - https://github.com/elad/node-imagemagick-native
 
 I decided to create my own library because I don't need *apis* for ImageMagick in my use cases, just a platform agnostic way to call the CLI tools. The design goals for this project are that it allows you to run IM CLI tools without having to worry about platform or version nuances, that's it.

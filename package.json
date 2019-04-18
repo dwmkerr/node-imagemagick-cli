@@ -27,14 +27,14 @@
   },
   "homepage": "https://github.com/dwmkerr/node-imagemagick-cli#readme",
   "devDependencies": {
-    "chai": "^4.1.2",
-    "eslint": "^5.0.0",
-    "eslint-config-airbnb-base": "^13.0.0",
-    "eslint-plugin-import": "^2.13.0",
-    "mocha": "^5.0.0",
-    "nyc": "^12.0.1",
-    "sinon": "^6.0.0",
-    "standard-version": "^4.4.0"
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "mocha": "^6.1.3",
+    "nyc": "^14.0.0",
+    "sinon": "^7.3.2",
+    "standard-version": "^5.0.2"
   },
   "dependencies": {
     "debug": "^4.1.1"
