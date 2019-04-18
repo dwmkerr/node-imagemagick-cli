@@ -84,6 +84,8 @@ This library uses the [`node-debug`](https://github.com/visionmedia/debug) modul
 DEBUG=imagemagick-cli node ./my-script.js
 ```
 
+With debugging enabled, the full command sent to the CLI, as well as all `stderr` and `stdout` output is shown in the log.
+
 ## Prior Art / Design Goals
 
 I made this library to deal with some issues relating to Windows in the [`app-icon`](https://github.com/dwmkerr/app-icon) project, which I didn't have to deal with again in other projects (like [`app-splash`](https://github.com/dwmkerr/app-splash).
