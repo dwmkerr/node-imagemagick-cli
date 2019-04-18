@@ -41,7 +41,7 @@ function exec(command) {
         debug(`Preparing to execute: ${reconstructedCommand}`);
 
         childProcess.exec(reconstructedCommand, (err, stdout, stderr) => {
-          debug(`  err: ${err.toString()}`);
+          debug(`  err: ${err ? err.toString() : '<null>'}`);
           debug(`  stdout: ${err.toString()}`);
           debug(`  stderr: ${err.toString()}`);
           if (err) {
