@@ -4,16 +4,25 @@
 
 Access the ImageMagick CLI tools from Node. Cross-platform, with support for ImageMagick 6 and 7.
 
-- [Introduction](#introduction)
-- [Compatibility](#compatibility)
-- [Coding](#coding)
-- [License](#license)
+
+<!-- vim-markdown-toc GFM -->
+
+* [Introduction](#introduction)
+* [Compatibility](#compatibility)
+* [API](#api)
+* [Debugging](#debugging)
+* [Prior Art / Design Goals](#prior-art--design-goals)
+* [Coding](#coding)
+    * [Creating a Release](#creating-a-release)
+* [License](#license)
+
+<!-- vim-markdown-toc -->
 
 ## Introduction
 
 This library is designed to provide a *safe* and *platform independent* way of calling the ImageMagick CLI tools.
 
-It is *safe* because it correctly deals with the [Windows convert issue](http://www.imagemagick.org/Usage/windows/#convert_issue). It is *platform indepdent* because you don't have to worry about how it deals with the issue.
+It is *safe* because it correctly deals with the [Windows convert issue](http://www.imagemagick.org/Usage/windows/#convert_issue). It is *platform independent* because you don't have to worry about how it deals with the issue.
 
 Install with npm:
 
@@ -67,6 +76,14 @@ imagemagickCli
 
 If the version cannot be identified (most likely because ImageMagick is not installed) then the function resolves with `null`.
 
+## Debugging
+
+This library uses the [`node-debug`](https://github.com/visionmedia/debug) module. To see low-level debugging information when using this library, set `imagemagick-cli` as part of the `DEBUG` environment variable:
+
+```bash
+DEBUG=imagemagick-cli node ./my-script.js
+```
+
 ## Prior Art / Design Goals
 
 I made this library to deal with some issues relating to Windows in the [`app-icon`](https://github.com/dwmkerr/app-icon) project, which I didn't have to deal with again in other projects (like [`app-splash`](https://github.com/dwmkerr/app-splash).
@@ -87,12 +104,12 @@ The only dependencies are Node 6 (or above).
 
 Useful commands for development are:
 
-| Command | Usage |
-|---------|-------|
-| `npm test` | Runs the unit tests. |
-| `npm run test:debug` | Runs the tests in a debugger. Combine with `.only` and `debugger` for ease of debugging. |
-| `npm run cov` | Runs the tests, writing coverage reports to `./artifacts/coverage`. |
-| `npm run lint` | Lint the code, using [airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb). |
+| Command              | Usage                                                                                                          |
+|----------------------|----------------------------------------------------------------------------------------------------------------|
+| `npm test`           | Runs the unit tests.                                                                                           |
+| `npm run test:debug` | Runs the tests in a debugger. Combine with `.only` and `debugger` for ease of debugging.                       |
+| `npm run cov`        | Runs the tests, writing coverage reports to `./artifacts/coverage`.                                            |
+| `npm run lint`       | Lint the code, using [airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb). |
 
 ### Creating a Release
 
