@@ -28,7 +28,7 @@
   "homepage": "https://github.com/dwmkerr/node-imagemagick-cli#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "eslint": "^5.16.0",
+    "eslint": "^6.0.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.2",
     "mocha": "^6.1.3",
