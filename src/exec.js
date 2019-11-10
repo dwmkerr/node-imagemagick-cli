@@ -29,8 +29,10 @@ function mapCli(cli) {
 
 function exec(command) {
   return new Promise((resolve, reject) => {
+    const safeCommand = /^convert /.test(command) ? `magick ${command}` : command;
+
     //  First, extract the cli and parameters.
-    const { cli, parameters } = deconstructCommand(command);
+    const { cli, parameters } = deconstructCommand(safeCommand);
 
     //  Map the cli to a path.
     mapCli(cli)
