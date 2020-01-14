@@ -3,12 +3,13 @@ const sinon = require('sinon'); const childProcess = require('child_process');
 const exec = require('./exec');
 
 describe('exec', () => {
-  const sandbox = sinon.createSandbox();
+  let sandbox = sinon.createSandbox();
   let platform;
 
   beforeEach(() => {
     //  Save the platform, we'll mess with it in tests.
     platform = Object.getOwnPropertyDescriptor(process, 'platform');
+    sandbox = sinon.createSandbox();
   });
 
   afterEach(() => {
@@ -52,20 +53,58 @@ describe('exec', () => {
     //  Fake the win32 platform.
     Object.defineProperty(process, 'platform', { value: 'win32' });
 
+    // //  We expect 'childProcess.exec' to be called with 'which'.
+    // sandbox.stub(childProcess, 'exec')
+    //   .withArgs('where convert')
+    //   .callsFake((cmd, callback) => {
+    //     //  Give a set of paths, essentially mocking the 'convert' problem:
+    //     //  http://www.imagemagick.org/Usage/windows/#convert_issue
+    //     const paths = [
+    //       'c:\\System32\\convert.exe',
+    //       'c:\\ProgramFiles\\ImageMagick\\Convert.exe',
+    //     ];
+    //     callback(null, paths.join('\r\n'));
+    //   })
+    //   //  Notice that the path is quoted...
+    //   .withArgs('"c:\\ProgramFiles\\ImageMagick\\Convert.exe" -v')
+    //   .callsFake((cmd, callback) => {
+    //     callback(null, 'Version: ImageMagick');
+    //   });
+
+    //  We should prefer the ImageMagick path.
+    return exec('convert -v')
+      .then(({ stdout }) => {
+        expect(stdout).to.match(/Version: ImageMagick/);
+      })
+      .catch((err) => { throw new Error(`'${err}' should not be thrown.`); });
+  });
+
+  it('can pick a CLI when ImageMagick does not have convert.exe anymore (v7.0.1-Q16)', () => {
+    //  Fake the win32 platform.
+    Object.defineProperty(process, 'platform', { value: 'win32' });
+
     //  We expect 'childProcess.exec' to be called with 'which'.
     sandbox.stub(childProcess, 'exec')
       .withArgs('where convert')
       .callsFake((cmd, callback) => {
         //  Give a set of paths, essentially mocking the 'convert' problem:
-        //  http://www.imagemagick.org/Usage/windows/#convert_issue
+        //  https://stackoverflow.com/questions/41104358/imagemagick-command-line-usage
+        //  https://github.com/aheckmann/gm/issues/684
         const paths = [
           'c:\\System32\\convert.exe',
-          'c:\\ProgramFiles\\ImageMagick\\Convert.exe',
+          '',
+        ];
+        callback(null, paths.join('\r\n'));
+      })
+      .withArgs('where magick')
+      .callsFake((cmd, callback) => {
+        const paths = [
+          'C:\\Program Files\\ImageMagick-7.0.9-Q16\\magick.exe',
         ];
         callback(null, paths.join('\r\n'));
       })
       //  Notice that the path is quoted...
-      .withArgs('"c:\\ProgramFiles\\ImageMagick\\Convert.exe" -v')
+      .withArgs('"C:\\Program Files\\ImageMagick-7.0.9-Q16\\magick.exe" convert -v')
       .callsFake((cmd, callback) => {
         callback(null, 'Version: ImageMagick');
       });
