@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/imagemagick-cli.svg)](https://badge.fury.io/js/imagemagick-cli) [![CircleCI](https://circleci.com/gh/dwmkerr/node-imagemagick-cli.svg?style=shield)](https://circleci.com/gh/dwmkerr/node-imagemagick-cli) [![Build status](https://ci.appveyor.com/api/projects/status/uwggloq6ooxq1vtj?svg=true)](https://ci.appveyor.com/project/dwmkerr/node-imagemagick-cli) [![codecov](https://codecov.io/gh/dwmkerr/node-imagemagick-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/node-imagemagick-cli) [![dependencies Status](https://david-dm.org/dwmkerr/node-imagemagick-cli/status.svg)](https://david-dm.org/dwmkerr/node-imagemagick-cli) [![devDependencies Status](https://david-dm.org/dwmkerr/node-imagemagick-cli/dev-status.svg)](https://david-dm.org/dwmkerr/node-imagemagick-cli?type=dev) [![Greenkeeper badge](https://badges.greenkeeper.io/dwmkerr/node-imagemagick-cli.svg)](https://greenkeeper.io/)
 
-Access the ImageMagick CLI tools from Node. Cross-platform, with support for ImageMagick 6 and 7.
+Access the ImageMagick CLI tools from Node. Cross-platform, with support for ImageMagick 6 and 7. Uses [Node LTS](https://nodejs.org/en/about/releases/).
 
 
 <!-- vim-markdown-toc GFM -->
@@ -23,6 +23,13 @@ Access the ImageMagick CLI tools from Node. Cross-platform, with support for Ima
 This library is designed to provide a *safe* and *platform independent* way of calling the ImageMagick CLI tools.
 
 It is *safe* because it correctly deals with the [Windows convert issue](http://www.imagemagick.org/Usage/windows/#convert_issue). It is *platform independent* because you don't have to worry about how it deals with the issue.
+
+Ensure you are using the correct version of Node (for example with [Node Version Manager](https://github.com/nvm-sh/nvm):
+
+```sh
+nvm install --lts
+nvm use --lts
+```
 
 Install with npm:
 
@@ -102,7 +109,12 @@ If you need more functionality I recommend looking into the projects above.
 
 ## Coding
 
-The only dependencies are Node 6 (or above).
+Ensure you are using the correct version of Node (for example with [Node Version Manager](https://github.com/nvm-sh/nvm):
+
+```sh
+nvm install --lts
+nvm use --lts
+```
 
 Useful commands for development are:
 
