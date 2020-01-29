@@ -27,7 +27,13 @@ function mapCli(cli) {
     });
 }
 
-function exec(command) {
+function exec(command, bufferSize) {
+  let finalBuffer = {maxBuffer: 1024 * 500};
+  
+  if(bufferSize){ 
+  finalBuffer = bufferSize;
+   }
+  
   return new Promise((resolve, reject) => {
     //  First, extract the cli and parameters.
     const { cli, parameters } = deconstructCommand(command);
@@ -40,7 +46,7 @@ function exec(command) {
         const reconstructedCommand = `"${mappedCli}" ${parameters}`;
         debug(`Preparing to execute: ${reconstructedCommand}`);
 
-        childProcess.exec(reconstructedCommand, (err, stdout, stderr) => {
+        childProcess.exec(reconstructedCommand, finalBuffer, (err, stdout, stderr) => {
           debug(`  err: ${err ? err.toString() : '<null>'}`);
           debug(`  stdout: ${stdout}`);
           debug(`  stderr: ${stderr}`);
