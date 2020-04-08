@@ -33,7 +33,7 @@
     "eslint-plugin-import": "^2.17.2",
     "mocha": "^7.0.0",
     "nyc": "^14.0.0",
-    "sinon": "^8.0.0",
+    "sinon": "^9.0.2",
     "standard-version": "^7.0.0"
   },
   "dependencies": {
