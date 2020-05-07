@@ -34,7 +34,7 @@
     "mocha": "^7.0.0",
     "nyc": "^14.0.0",
     "sinon": "^8.0.0",
-    "standard-version": "^7.0.0"
+    "standard-version": "^8.0.0"
   },
   "dependencies": {
     "debug": "^4.1.1"
